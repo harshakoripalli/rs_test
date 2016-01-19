@@ -8,6 +8,7 @@
       <th>Name</th>
 	  <th>Pet Name</th>
 	  <th>Date of Next Appointment</th>
+	  <th>Reason of Visit</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,13 +23,17 @@
 		</td>
 		<td><% customer.pets.each do |pet|%>
             <% pet.appointments.each do |appointment| %>
-			<% if appointment.date_of_next_visit > Date.today then %>
-			<%= appointment.date_of_next_visit %>
+			<% if appointment.date_of_next_appointment > Date.today then %>
+			<%= appointment.date_of_next_appointment %>
 			<% else %>
 			<%= " - " %>
 			<% end %>
 			<% end %>
 			<% end %>
+		</td>
+		<td><% customer.pets.each do |pet|%>
+            <% pet.appointments.each do |appointment| %>
+			<%= appointment.reason_of_visit %>
 		</td>
         <td><%= link_to 'Show', customer %></td>
         <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
